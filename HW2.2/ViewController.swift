@@ -19,14 +19,6 @@ class ViewController: UIViewController {
     @IBOutlet var labelGreen: UILabel!
     @IBOutlet var labelBlue: UILabel!
     
-    private func setViewColor() {
-        viewController.backgroundColor = .init(red: CGFloat(sliderRed.value), green: CGFloat(sliderGreen.value), blue: CGFloat(sliderBlue.value), alpha: 1)
-    }
-
-    private func setLabelText(_ label: UILabel!, _ slider: UISlider!) {
-        label.text = String(round(slider.value * 100) / 100)
-    }
-    
     override func viewDidLoad() {
 
         super.viewDidLoad()
@@ -34,43 +26,44 @@ class ViewController: UIViewController {
         // view
         viewController.layer.cornerRadius = 15
         setViewColor()
-        // labels
         
+        // labels and sliders
+        setRedSettings()
+        setGreenSettings()
+        setBlueSettings()
+       
+    }
+    
+    private func setRedSettings() {
         labelRed.textColor = .red
-        labelGreen.textColor = .green
-        labelBlue.textColor = .blue
-        
-        setLabelText(labelRed, sliderRed)
-        setLabelText(labelGreen, sliderGreen)
-        setLabelText(labelBlue, sliderBlue)
-        
-        
-        // sliders
         sliderRed.minimumTrackTintColor = .red
+        setLabelText(labelRed, sliderRed)
+    }
+    
+    private func setGreenSettings() {
+        labelGreen.textColor = .green
         sliderGreen.minimumTrackTintColor = .green
+        setLabelText(labelGreen, sliderGreen)
+    }
+    
+    private func setBlueSettings() {
+        labelBlue.textColor = .blue
         sliderBlue.minimumTrackTintColor = .blue
-        
-        sliderRed.minimumValue = 0
-        sliderRed.maximumValue = 1
-        
-        sliderGreen.minimumValue = 0
-        sliderGreen.maximumValue = 1
-        sliderBlue.minimumValue = 0
-        sliderBlue.maximumValue = 1
-        
+        setLabelText(labelBlue, sliderBlue)
+    }
+    
+    private func setViewColor() {
+        viewController.backgroundColor = .init(red: CGFloat(sliderRed.value), green: CGFloat(sliderGreen.value), blue: CGFloat(sliderBlue.value), alpha: 1)
     }
 
-    @IBAction func sliderRedAction() {
+    private func setLabelText(_ label: UILabel, _ slider: UISlider) {
+        label.text = String(round(slider.value * 100) / 100)
+    }
+    
+    @IBAction func sliderAction() {
         setLabelText(labelRed, sliderRed)
-        setViewColor()
-    }
-    @IBAction func sliderGreenAction() {
         setLabelText(labelGreen, sliderGreen)
-        setViewColor()
-    }
-    @IBAction func sliderBlueAction() {
         setLabelText(labelBlue, sliderBlue)
         setViewColor()
     }
 }
-
