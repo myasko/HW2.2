@@ -20,7 +20,6 @@ class ViewController: UIViewController {
     @IBOutlet var labelBlue: UILabel!
     
     override func viewDidLoad() {
-
         super.viewDidLoad()
         
         // view
@@ -28,28 +27,15 @@ class ViewController: UIViewController {
         setViewColor()
         
         // labels and sliders
-        setRedSettings()
-        setGreenSettings()
-        setBlueSettings()
-       
+        setColorSettings(labelRed, sliderRed, .red)
+        setColorSettings(labelGreen, sliderGreen, .green)
+        setColorSettings(labelBlue, sliderBlue, .blue)
     }
     
-    private func setRedSettings() {
-        labelRed.textColor = .red
-        sliderRed.minimumTrackTintColor = .red
-        setLabelText(labelRed, sliderRed)
-    }
-    
-    private func setGreenSettings() {
-        labelGreen.textColor = .green
-        sliderGreen.minimumTrackTintColor = .green
-        setLabelText(labelGreen, sliderGreen)
-    }
-    
-    private func setBlueSettings() {
-        labelBlue.textColor = .blue
-        sliderBlue.minimumTrackTintColor = .blue
-        setLabelText(labelBlue, sliderBlue)
+    private func setColorSettings(_ label: UILabel, _ slider: UISlider, _ color: UIColor) {
+        label.textColor = color
+        slider.minimumTrackTintColor = color
+        setLabelText(label, slider)
     }
     
     private func setViewColor() {
