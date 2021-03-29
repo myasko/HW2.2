@@ -53,7 +53,11 @@ class ViewController: UIViewController {
     }
     
     private func setViewColor() {
-        viewController.backgroundColor = .init(red: CGFloat(sliderRed.value), green: CGFloat(sliderGreen.value), blue: CGFloat(sliderBlue.value), alpha: 1)
+        viewController.backgroundColor = .init(
+            red: CGFloat(sliderRed.value),
+            green: CGFloat(sliderGreen.value),
+            blue: CGFloat(sliderBlue.value),
+            alpha: 1)
     }
 
     private func setLabelText(_ label: UILabel, _ slider: UISlider) {
